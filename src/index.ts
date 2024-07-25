@@ -6,12 +6,15 @@ import { generateLocationMessage, generateMessage } from './utils/messages'
 import { addUser, getUser, getUsersInRoom, removeUser } from './utils/users'
 
 const app = express()
+const server = http.createServer(app)
+const io = new Server(server)
 app.use(express.static('public'))
-const io = new Server(
-    http.createServer(app).listen(3000, () => {
-        console.log("Server runnin at http://localhost:3000");
-    })
-)
+
+const port = process.env.PORT || 3000
+
+server.listen(port, () => {
+    console.log(`Server Running On Port ${port}`);
+})
 
 io.on('connection', (socket) => {
     console.log("New Web Socket Connection");
