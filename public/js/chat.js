@@ -1,4 +1,7 @@
-const sockety = io()
+const sockety = io('http://localhost:3000')
+sockety.on('connect', () => {
+    console.log("Connected To Server");
+})
 
 const $messageForm = document.querySelector('#message-form')
 const $messageFormInput = $messageForm.querySelector('input')
