@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('chat.js script loaded');
     if (typeof io !== undefined) {
-        const sockety = io()
+        const sockety = io("ws://localhost:3000")
         sockety.on('connect', () => {
             console.log("Connected To Server");
         })

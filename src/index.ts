@@ -7,9 +7,9 @@ import { addUser, getUser, getUsersInRoom, removeUser } from './utils/users'
 
 const app = express()
 const server = http.createServer(app)
-const io = new Server(server)
+const io = new Server(server, { cors: { origin: "*" } })
 
-const port = process.env.PORT || 3000
+const port = 3000
 
 server.listen(port, () => {
     console.log(`Server Running On Port ${port}`);
